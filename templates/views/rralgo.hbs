@@ -1,0 +1,435 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+    integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROUND ROBIN</title>
+
+    <link rel="icon" type="image/x-icon" href="img/logo4.jpg">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Suez+One&family=Yeseva+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&display=swap');
+
+
+        * {
+            font-family: 'Gentium Book Plus', serif;
+            margin: 1%;
+        }
+
+        .form-control {
+            display: flex;
+            width: 125%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--bs-body-color);
+            background-color: var(--bs-form-control-bg);
+            background-clip: padding-box;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.375rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        body {
+            color: whitesmoke;
+
+                {
+                    {
+                    !-- border: greenyellow 4px solid;
+                    --
+                }
+            }
+        }
+
+
+        canvas {
+            max-height: 50%;
+        }
+
+        .avg_output {
+            margin-left: 0%;
+            display: flex;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0px;
+            grid-auto-rows: minmax(100px, auto);
+            align-items: center;
+            justify-content: space-between;
+            align-content: space-around;
+            justify-items: center;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+
+        .text-capitalize {
+            text-transform: capitalize !important;
+            font-weight: bolder;
+        }
+
+        label {
+            display: inline-block;
+            padding-left: 0px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: auto;
+            font-family: inherit;
+            font-size: inherit;
+            color: rgb(0, 0, 0);
+            line-height: inherit;
+            font-size: large;
+            font-weight: bold;
+            padding: 0px 0px;
+            width: 11em;
+        }
+
+
+
+
+        #del {
+            margin-left: 21rem;
+            width: 20vw;
+            font-weight: bolder;
+
+        }
+
+        #del2 {
+            margin-left: 21rem;
+            width: 20vw;
+            font-weight: bolder;
+
+        }
+
+        #delete {
+
+            width: 10vw;
+            font-weight: bolder;
+
+        }
+
+        #delete:hover {
+            background-color: rgb(240, 240, 144);
+        }
+
+        #add_row {
+            margin-left: 11.5rem;
+            width: 10vw;
+            font-weight: bolder;
+        }
+
+        #add_row:hover {
+            background-color: rgb(54, 94, 20);
+        }
+
+        #exe {
+            width: 10vw;
+            font-weight: bolder;
+        }
+
+        #exe:hover {
+            background-color: rgb(222, 99, 99);
+            box-shadow: inset;
+        }
+
+        #back {
+            text-decoration: none;
+            color: white;
+            font-size: x-large;
+            font-weight: bolder;
+            border-radius: 30px;
+        }
+
+        #back:hover {
+            color: rgb(234, 255, 77);
+        }
+
+        #excel {
+            width: 16vw;
+            color: black;
+            font-size: larger;
+            font-weight: bolder;
+        }
+
+        #excel:hover {
+            background-color: rgb(220, 200, 20);
+        }
+
+        #chart {
+            width: 14vw;
+            margin-left: 21rem;
+            color: black;
+            font-size: larger;
+            font-weight: bolder;
+        }
+
+        nav {
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+
+        }
+
+        #chart:hover {
+            background-color: rgb(20, 220, 33);
+        }
+
+
+        #mychart {
+            color: black;
+
+        }
+
+        #toggle {
+            width: 15vw;
+            margin-left: 32rem;
+            border-radius: 11px;
+            background-color: blue;
+            color: rgb(251, 247, 247);
+            font-size: larger;
+            font-weight: bolder;
+        }
+
+        #chd {
+            margin-left: 11rem;
+            margin-top: 4rem;
+            background-color: rgb(31, 42, 44);
+        }
+
+        .Cont {
+            display: inline-block;
+            text-align: center;
+            z-index: 1;
+        }
+
+        span {
+            color: #8eff03;
+            text-transform: uppercase;
+        }
+
+        .Ctext {
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            width: 150%;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4.5s, cursor 1.1s step-end infinite alternate;
+            z-index: 1;
+        }
+
+        /* cursor blinking*/
+        @keyframes cursor {
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        #background-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body style="background-image: linear-gradient(276deg, #080808 0%, #000000 74%); color: rgb(255, 255, 255);">
+    <!--<body> -->
+    <div class="containernew">
+        <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+            <source src="video/newbg.mp4" type="video/mp4">
+        </video>
+        <a class="navbar-brand" href="/cardos">
+            <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+            <lord-icon src="https://cdn.lordicon.com/hjbsbdhw.json" trigger="hover" style="width:45px;height:45px">
+            </lord-icon>
+        </a>
+        <a class="navbar-brand" href="/bot">
+        <img src="img/mainbot.png" style="width:50px;height:50px;margin-top: -49px;">
+        </a>
+    </div>
+    <div class="Cont">
+        <p class="Ctext"><span><strong> Round Robin Algorithm</strong></span>_CPU Scheduling</p>
+    </div>
+    <div class="container mt-4">
+        <div class="main row justify-content-center">
+            <form action="/rralgo" class="rr_form row justify-content-center mb-4" method="post">
+                <div class="col- col-md-2  mb-2">
+                    <label for="username">Enter Filename:</label>
+                    <input class="form-control" id="user" type="text" name="user1" placeholder="Enter the Filename">
+                </div>
+
+                <div class="col- col-md-2  mb-2">
+                    <label for="quantum">Quantum Time :</label>
+                    <input class="form-control" id="qtinput" type="number" name="qtime"
+                        placeholder="Enter the quantum time">
+                </div>
+
+                <div class="col- col-md-2 mb-2">
+                    <label for="arrival">Arrival Time :</label>
+                    <input class="form-control" id="atimeinput" type="number" name="atime"
+                        placeholder="Enter the arrival time">
+                </div>
+
+                <div class="col- col-md-2 mb-2">
+                    <label for="burst">Burst Time :</label>
+                    <input class="form-control" id="btimeinput" type="number" name="btime"
+                        placeholder="Enter the burst time">
+                </div>
+
+                <div class="col- col-md-8 ">
+                    <button class="btn btn-success add-btn" id="add_row">Add Process</button>
+                    <button class="btn btn-danger add-btn" id="exe">Execute</button>
+                    <button class="btn btn-warning add-btn" id="delete" name="save" type="submit">Save Data</button>
+                </div>
+
+
+
+                <div class="col-10 col-md-10 mt-5">
+                    <h1 style="color: #8eff03" class="mb-5 text-center"><strong>INPUT TABLE</strong></h1>
+                    <table
+                        class="rr_table table table-striped table-success table-hover table-bordered border-success border border-3"
+                        id="rr_table">
+                        <thead>
+                            <tr>
+                                <th>Process no.</th>
+                                <th>Arrival time</th>
+                                <th>Burst time</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="output col-10 col-md-10 mt-5">
+                    <h1 style="color: #8eff03" class="mb-5 text-center"><strong>OUTPUT TABLE</strong></h1>
+                    <table
+                        class="table table-striped table-success table-hover table-bordered border-success border border-3"
+                        id="rr_table2">
+                        <thead>
+                            <tr>
+                                <th>Process no.</th>
+                                <th>Completion Time</th>
+                                <th>Turn Around Time</th>
+                                <th>Waiting Time</th>
+                                <th>Response Time</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="rr_table2">
+                            <tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="output col-10 col-md-10 mt-5">
+                    <h1 style="color: #8eff03" class="mb-5 text-center"><strong>GANTT CHART</strong></h1>
+                    <table id="gant" class="table table-hover">
+                        <thead style="font-size:1.5rem;border:5px solid blue;">
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size:1.5rem;border:5px solid blue;">
+                            <tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-success add-btn" id="excel" onclick="ExportToExcel('xlsx')">Export table to
+                    excel</button>
+                <h1 style="color: #8eff03" class="mb-4 mt-1 text-center"><strong>OTHER DETAILS</strong></h1>
+                <div class="avg_output row justify-content-center">
+
+                    <div class="avg_output">
+                        <div class="col col-md-2 mb-2">
+                            <label for="avg_ct">Avg. Completion Time:</label>
+                            <input id="avg_ct" name="acompt" type="number" readonly>
+                        </div>
+
+                        <div class="col- col-md-2 mb-2">
+                            <label for="avg_tat">Avg. Turn Around Time:</label>
+                            <input id="avg_tat" name="atat" type="number" readonly>
+                        </div>
+
+                        <div class="col- col-md-2 mb-2">
+                            <label for="avg_rt">Average Response Time:</label>
+                            <input id="avg_rt" name="art" type="number" readonly>
+                        </div>
+
+                        <div class="col- col-md-2 mb-2">
+                            <label for="avg_wt">Average Waiting Time:</label>
+                            <input id="avg_wt" name="awaitt" type="number" readonly>
+                        </div>
+
+                        <div class="col- col-md-2 mb-2">
+                            <label for="thrpt">CPU Throughput Value: </label>
+                            <input id="thrpt" name="thrptt" type="number" readonly>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+    </div>
+    </form>
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+
+    <script src="js/rralgo.js"></script>
+
+    {{!--
+    <script>
+
+        const targetDiv = document.getElementById("chd");
+        const btn = document.getElementById("toggle");
+        btn.onclick = function () {
+            if (targetDiv.style.display !== "none") {
+                targetDiv.style.display = "none";
+            } else {
+                targetDiv.style.display = "block";
+            }
+        };
+
+    </script> --}}
+</body>
+
+</html>

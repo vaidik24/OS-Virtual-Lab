@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--font awesome cdn link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="aboutus.css">
+    <link rel="icon" type="image/x-icon" href="img/logo4.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <title>About Us Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-transform: capitalize;
+            transition: all .2s linear;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        body {
+            background: #000;
+
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            height: 3em;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            z-index: 1;
+        }
+
+        nav ul {
+            text-align: right;
+            font-size: large;
+            padding: 0.6em;
+            margin-bottom: 0.5em;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .other {
+            text-decoration: none;
+            padding: 0.3em 0.6em;
+            color: rgb(255, 255, 255);
+            opacity: 0.8;
+        }
+
+        .other:hover,
+        .other:focus {
+            opacity: 1;
+        }
+
+        .Home {
+            display: inline-flex;
+            text-decoration: none;
+            padding: 0.3em 0.8em;
+            color: rgb(255, 255, 255);
+            border-radius: 1em;
+            font-weight: 550;
+        }
+
+        .Home:hover,
+        .Home:focus {
+            background-color: rgb(33, 0, 248);
+        }
+
+        .Container {
+            text-align: center;
+            display: inline-block;
+            justify-content: center;
+            padding: 2em;
+            margin-top: 2em;
+            margin-left: 38.5%;
+
+        }
+
+        .Ctext {
+            font-size: 2em;
+            letter-spacing: 1px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 1.2s, cursor 0.1s step-end infinite alternate;
+            z-index: 1;
+        }
+
+        /*cursor blinking*/
+        @keyframes cursor {
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        span {
+            color: #8eff03;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: "Sofia", sans-serif;
+            font-size: 40px;
+            margin-top: 20px;
+            color: #39FF14;
+            text-align: center;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 75px;
+        }
+
+        .card {
+            height: 440px;
+            width: 290px;
+            margin: 20px;
+            box-shadow: 0 3px 5px #000;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            background-color: #222;
+            border: double 4px transparent;
+            border-radius: 10px;
+            background-image: linear-gradient(#222, #222), radial-gradient(circle at top left, #39FF14, #3020ff);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        .card .bg-image img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            clip-path: polygon(0 0, 100% 0%, 100% 70%, 45% 100%, 0 70%);
+        }
+
+        .card .pic img {
+            object-fit: cover;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            border: 10px solid #222;
+            margin-top: -110px;
+            position: relative;
+        }
+
+        .card .info h3 {
+            color: #39FF14;
+            font-size: 20px;
+            padding: 10px 0;
+
+        }
+
+        .card .info span {
+            font-size: 15px;
+            color: #e74c3c;
+        }
+
+        .card .info p {
+            font-size: 13px;
+            padding: 10px 20px;
+            color: #999;
+        }
+
+        .card .info .icons a,
+        .card .info .icons i {
+            font-size: 20px;
+            text-decoration: none;
+            color: #39FF14;
+            margin-top: 20px;
+            padding: 0 5px;
+        }
+
+        .card .info .icons a:hover,
+        .card .info .icons i:hover {
+            color: #f0f0f0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="Home" href="/cardos">HOME</a></li>
+                <li><a class="other" href="/read">Explore</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="Container">
+        <p class="Ctext"><span> <strong>About Us...</strong></span></p>
+    </div>
+    <section class="container">
+        <div class="card">
+            <div class="bg-image">
+                <img src="img/bg-img.jpg" alt="">
+            </div>
+            <div class="pic">
+                <img src="img/dar.jpg" alt="Photo here">
+            </div>
+            <div class="info">
+                <h3>Darshan Laljani</h3>
+                <span><i class="fas fa-code"></i>FrontEnd</span>
+                <p>Roll No - 21BCP232</p>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/aniket-suthar-301422249" target="_blank"
+                        class="fab fa-linkedin"></a>
+                    <a href="mailto:aniket.sce21@sot.pdpu.ac.in?Subject=Some%20subject" target="_blank"><i
+                            class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="bg-image">
+                <img src="img/bg-img.jpg" alt="">
+            </div>
+            <div class="pic">
+                <img src="img/rah.jpg" alt="Photo here">
+            </div>
+            <div class="info">
+                <h3>Rahil Ganatra</h3>
+                <span><i class="fas fa-code"></i> JavaScript</span>
+                <p>Roll No - 21BCP239</p>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/rahil-ganatra-323829225" target="_blank"
+                        class="fab fa-linkedin"></a>
+                    <a href="mailto:rahil.gce21@sot.pdpu.ac.in?Subject=Some%20subject" target="_blank"><i
+                            class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="bg-image">
+                <img src="img/bg-img.jpg" alt="">
+            </div>
+            <div class="pic">
+                <img src="img/aps.jpg" alt="Photo here">
+            </div>
+            <div class="info">
+                <h3>Aniket Suthar</h3>
+                <span><i class="fas fa-code"></i>BackEnd</span>
+                <p>Roll No - 21BCP229</p>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/darshan-laljani-240048233" target="_blank"
+                        class="fab fa-linkedin"></a>
+                    <a href="mailto:darshan.lce21@sot.pdpu.ac.in?Subject=Some%20subject" target="_blank"><i
+                            class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="bg-image">
+                <img src="img/bg-img.jpg" alt="">
+            </div>
+            <div class="pic">
+                <img src="img/vad.jpg" alt="Photo here">
+            </div>
+            <div class="info">
+                <h3>Vaidik Pandya</h3>
+                <span><i class="fas fa-code"></i>FrontEnd</span>
+                <p>Roll No - 21BCP228</p>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/vaidik-pandya-353a85213/" target="_blank"
+                        class="fab fa-linkedin"></a>
+                    <a href="mailto:vaidik.pce21@sot.pdpu.ac.in?Subject=Some%20subject" target="_blank"><i
+                            class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="bg-image">
+                <img src="img/bg-img.jpg" alt="">
+            </div>
+            <div class="pic">
+                <img src="img/ras.jpg" alt="Photo here">
+            </div>
+            <div class="info">
+                <h3>Rashmi Panchal</h3>
+                <span><i class="fas fa-code"></i> Back End</span>
+                <p>Roll No - 21BCP231</p>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/rashmi-panchal-56749326b" target="_blank"
+                        class="fab fa-linkedin"></a>
+                    <a href="mailto:rashmi.pce21@sot.pdpu.ac.in?Subject=Some%20subject" target="_blank"><i
+                            class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

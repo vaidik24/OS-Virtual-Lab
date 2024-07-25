@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRU</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="icon" type="image/x-icon" href="img/logo4.jpg">
+    <!-- <link rel="stylesheet" href="mru.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Suez+One&family=Yeseva+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&display=swap');
+
+        * {
+            margin: 2px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            margin-left: 2em;
+            margin-top: 2em
+        }
+
+        .Container {
+            display: inline-block;
+            /* padding: 2em; */
+            /* margin-top: 2em; */
+            text-align: center;
+
+            z-index: 1;
+        }
+
+        .Ctext {
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            border-right: 5px solid rgb(78, 77, 77);
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s, cursor 0.1s step-end infinite alternate;
+            z-index: 1;
+        }
+
+        /*cursor blinking*/
+        @keyframes cursor {
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        body {
+            /* margin-top: 0.4em; */
+            font-family: 'Gentium Book Plus', serif;
+            background-image: linear-gradient(276deg, #020203 0%, #000000 74%);
+            text-align: center;
+            color: rgb(255, 255, 255);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            height: 3em;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        nav ul {
+            text-align: right;
+            font-size: large;
+            padding: 0.6em;
+            margin-bottom: 0.5em;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .other {
+            text-decoration: none;
+            padding: 0.3em 0.6em;
+            color: rgb(255, 255, 255);
+            opacity: 0.8;
+        }
+
+        .other:hover,
+        .other:focus {
+            opacity: 1;
+        }
+
+        .Home {
+            display: inline-flex;
+            text-decoration: none;
+            padding: 0.3em 0.8em;
+            color: rgb(255, 255, 255);
+            border-radius: 1em;
+            font-weight: 550;
+        }
+
+        .Home:hover,
+        .Home:focus {
+            background-color: rgb(33, 0, 248);
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        span {
+            color: #8eff03;
+            text-transform: uppercase;
+        }
+
+        .input {
+            text-align: center;
+        }
+
+        .Main {
+            text-align: left;
+            width: 100%;
+            display: grid;
+        }
+
+        h2 {
+            text-align: center;
+            letter-spacing: .03em;
+            font-size: 2.5em;
+            padding: .4em;
+            border-radius: 1em;
+            background-color: #130f40;
+            background-image: linear-gradient(900deg, #2aff05 20%, #ffffff 74%);
+            -webkit-background-clip: text;
+            color: hsla(0, 0%, 100%, 0.263);
+        }
+
+        .selectorcomb {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            text-align: center;
+            font-size: large;
+        }
+
+        .same {
+            background-color: rgb(255, 255, 255);
+            border-radius: .5em;
+            padding: 0.3em;
+            border-width: 0;
+            width: 30%;
+            font: inherit;
+            margin-top: 0.4em;
+        }
+
+        h4,
+        table {
+            margin-left: 1.4em;
+        }
+
+        details div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            background-color: rgb(255, 255, 255);
+            border-radius: .5em;
+            padding: 0.1em;
+            border-width: 0;
+            width: 80%;
+            font: inherit;
+        }
+
+        .buttons {
+            text-align: center;
+            display: block;
+            padding: 2em;
+            margin: 0;
+        }
+
+        .b1,
+        .b2 {
+            width: 100px;
+            height: 30px;
+            border-radius: 0.3em;
+            border-width: 0;
+            background-color: rgb(89, 66, 233);
+            color: aliceblue;
+            font-size: medium;
+            font-weight: 600;
+            position: sticky;
+        }
+
+        .b1 {
+            margin-right: 3em;
+        }
+
+        .b1:hover,
+        .b2:hover {
+            cursor: pointer;
+            background-color: rgb(34, 0, 255);
+        }
+
+        .outsame {
+            background-color: rgb(255, 255, 255);
+            border-radius: .5em;
+            padding: 0.3em;
+            background-color: rgb(255, 255, 255);
+            border-radius: .5em;
+            padding: 0.3em;
+        }
+
+        table {
+            z-index: 1;
+            border: #0876f4;
+            border-width: 3px;
+        }
+
+        h4 {
+            margin-bottom: 1.7em;
+            font-size: larger;
+            background-color: #130f40;
+            background-image: linear-gradient(900deg, #2aff05 20%, #ffffff 74%);
+            -webkit-background-clip: text;
+            color: hsla(0, 0%, 100%, 0.263);
+        }
+
+        details {
+            display: inline-block;
+        }
+
+        td {
+            padding: 0.8rem;
+            font-size: large;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            border-width: 4px;
+        }
+
+        .containernew {
+            display: flex;
+
+        }
+
+        #background-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containernew">
+        <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+            <source src="video/newbg.mp4" type="video/mp4">
+        </video>
+        <a class="navbar-brand" href="/cardos">
+            <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+            <lord-icon src="https://cdn.lordicon.com/hjbsbdhw.json" trigger="hover" style="width:45px;height:45px">
+            </lord-icon>
+        </a>
+        <a class="navbar-brand" href="/bot">
+         <img src="img/mainbot.png" style="width:50px;height:50px;margin-top: 0px;">
+        </a>
+    </div>
+    <main>
+        <div class="Container">
+            <p class="Ctext"><span> <strong> Most Recently Used Algorithm_</strong></span>Page Replacement.</p>
+        </div>
+        <h2 style="color: #8eff03" class="input_text">INPUTS</h2>
+        <section class="input">
+            <form action="/malgo" autocomplete="off" method="post">
+                <div>
+                    <label for="username">Enter Filename :</label>
+                    <br>
+                    <input class="same" id="user1" name="user" type="text" placeholder="Enter the File name">
+                </div>
+                <div>
+                    <label for="NoofFrames">Number Of Frames:</label>
+                    <br>
+                    <input class="same" type="number" name="frame" id="NoofFrames" maxlength="70" required
+                        autocomplete="off" placeholder="Enter number of frames ">
+                </div>
+                <div>
+                    <label for="PageNo">Page Number:</label>
+                    <br>
+                    <input class="same" type="number" name="page" id="PageNo" min="0" maxlength="70" required
+                        autocomplete="off" placeholder="Enter Head to start">
+                </div>
+        </section>
+        <section class="buttons">
+            <button style="background-color:red" class="b1" id="savebtn" name="save">Save Data</button>
+            <button style="background-color:green" class="b1" id="addTrackBtn">Add Page</button>
+            <button class="b2" id="executeButton">Execute</button>
+        </section>
+        <section class="Output">
+            <h2 style="color: #8eff03">OUTPUT</h2>
+            <details>
+                <div class="detail">
+                    <div>
+                        <label for="numofhits">Total number of Hits: </label>
+                        <input class="same1" type="number" id="numofhits" name="hits" readonly>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="numofmiss">Total number of Misses:</label>
+                        <input class="same1" type="number" name="miss" id="numofmiss" readonly>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="hitratio">Ratio of Hits:</label>
+                        <input class="same1" type="number" name="hitratio" id="hitratio" readonly>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="missratio">Ratio of Misses:</label>
+                        <input class="same1" type="number" name="missratio" id="missratio" readonly>
+                    </div>
+                </div>
+            </details>
+            </form>
+        </section>
+        <h2 style="color: #8eff03">MEMORY LOCATION:</h2>
+        <table class="table" border="2" cellspacing="8" cellpadding="8" id="outputtable">
+        </table>
+    </main>
+    <script type="module" src="js/mru.js"></script>
+    <script type="module" src="js/validator.js"></script>
+</body>
+
+</html>

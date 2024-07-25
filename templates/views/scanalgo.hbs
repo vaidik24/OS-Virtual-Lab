@@ -1,0 +1,428 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+    integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAN/C-SCAN STIMULATOR</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="icon" type="image/x-icon" href="img/logo4.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Suez+One&family=Yeseva+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&display=swap');
+
+        * {
+            font-family: 'Gentium Book Plus', serif;
+            padding: 0;
+            margin: 1%;
+            box-sizing: border-box;
+        }
+
+        .us {
+            text-align: center;
+            font-size: medium;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Container {
+            display: inline-block;
+            padding: 1em;
+            padding-left: 1rem;
+        }
+
+        .Ctext {
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            width: 105%;
+
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2.5s, cursor 0.1s step-end infinite alternate;
+        }
+
+        /*cursor blinking*/
+        @keyframes cursor {
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #000000;
+            background-color: #121213;
+            color: rgb(255, 255, 255);
+            overflow-x: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: whitesmoke;
+
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            height: 3em;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        nav ul {
+            text-align: right;
+            font-size: large;
+            padding: 0.6em;
+            margin-bottom: 0.5em;
+        }
+
+        li {
+            display: inline;
+        }
+
+        label {
+            font-size: 1.2rem;
+        }
+
+        .other {
+            text-decoration: none;
+            padding: 0.3em 0.6em;
+            color: rgb(255, 255, 255);
+            opacity: 0.8;
+        }
+
+        .other:hover {
+            opacity: 1;
+        }
+
+        .Home {
+            display: inline-flex;
+            text-decoration: none;
+            padding: 0.3em 0.8em;
+            color: rgb(255, 255, 255);
+            border-radius: 1em;
+            font-weight: 550;
+        }
+
+        .Home:hover {
+            background-color: rgb(89, 66, 233);
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        span {
+            color: #8eff03;
+            padding-left: 6rem;
+            text-transform: uppercase;
+        }
+
+        .input {
+            text-align: left;
+            margin-left: 2.1em;
+            display: grid;
+        }
+
+        h1 {
+            text-align: center;
+            letter-spacing: .03em;
+            font-size: 2.5em;
+            background-color: #130f40;
+            background-image: linear-gradient(900deg, #2aff05 20%, #ffffff 74%);
+            -webkit-background-clip: text;
+            color: hsla(0, 0%, 100%, 0.263);
+        }
+
+        .inputsformat {
+            background-color: rgb(0, 136, 255);
+        }
+
+        .output,
+        .inputTable {
+            text-align: left;
+            margin-left: 2.1em;
+            margin-bottom: 2em;
+        }
+
+        .selectorcomb {
+            display: flex;
+            grid-template-columns: 3fr 3fr;
+            text-align: center;
+            font-size: large;
+            justify-items: end;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .same {
+            background-color: rgb(255, 255, 255);
+            border-radius: .5em;
+            padding: 0.1em;
+            border-width: 0;
+            width: 13em;
+            font: inherit;
+        }
+
+        div {
+            padding: 0em;
+        }
+
+        select {
+            width: 150px;
+            height: 30px;
+            border-radius: .5em;
+            font: 700;
+            word-spacing: 1em;
+        }
+
+        .buttons {
+            text-align: center;
+            display: block;
+            margin-top: 1em;
+        }
+
+        .b1,
+        .b2 {
+            width: 144px;
+            height: 30px;
+            border-radius: 0.3em;
+            border-width: 0;
+            margin-left: .7em;
+            background-color: rgb(89, 66, 233);
+            color: aliceblue;
+            font-size: medium;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .inputTable {
+            display: flow-root;
+        }
+
+        #chart {
+            margin-left: 100em;
+            margin-top: 2rem;
+            margin-bottom: 1em;
+            width: 15vw;
+            margin-left: 0rem;
+            color: rgb(231, 219, 219);
+            font-size: large;
+            font-weight: bold;
+        }
+
+        #toggle {
+            width: 15vw;
+            margin-left: 31rem;
+            color: rgb(251, 247, 247);
+            font-size: larger;
+            font-weight: bolder;
+        }
+
+        #chd {
+            text-align: center;
+            margin-left: 11rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            background-color: rgb(31, 42, 44);
+        }
+
+        h4 {
+            margin-top: 1.7em;
+            font-size: large;
+        }
+
+        details {
+            display: inline-block;
+        }
+
+        .detail div {
+            float: left;
+            display: grid;
+            font-size: large;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        td {
+            display: table-cell;
+            vertical-align: inherit;
+            font-size: xx-large;
+            font-weight: bolder;
+
+        }
+
+        .ccontainernew {
+            display: flex;
+
+        }
+
+        .input {
+            text-align: left;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        #background-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containernew">
+        <video id="background-video" autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+            <source src="video/newbg.mp4" type="video/mp4">
+        </video>
+        <a class="navbar-brand" href="/cardos">
+            <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+            <lord-icon src="https://cdn.lordicon.com/hjbsbdhw.json" trigger="hover" style="width:45px;height:45px">
+            </lord-icon>
+        </a>
+        <a class="navbar-brand" href="/bot">
+            <img src="img/mainbot.png" style="width:50px;height:50px;margin-top: -49px;">
+        </a>
+    </div>
+    <main>
+        <div class="Container">
+            <p class="Ctext"><span> <strong> Scan and C-Scan Algorithm_</strong></span>Disc Scheduling.</p>
+        </div>
+        <h1 style="color: #8eff03" class="input_text">INPUTS</h1>
+        <div class="us">
+            <form action="/salgo" autocomplete="off" method="post">
+                <div>
+                    <label for="username">Enter Filename</label>
+                    <input class="same" id="user1" name="user" type="text" placeholder="Enter the File name">
+                </div>
+                <div>
+                    <label for="scanOrscanC">Choose Method:</label>
+                    <select class="same" name="algoselector" id="scanOrscanC">
+                        <option value="scan">Scan</option>
+                        <option value="c-scan">C-Scan</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="Selector">Track Selector:</label>
+                    <select class="same" name="TraclSelector" id="Selector">
+                        <option value="larger">Larger</option>
+                        <option value="smaller">Smaller</option>
+                    </select>
+                </div>
+        </div>
+        <section class="input">
+
+            <div class="selectorcomb">
+
+                <div>
+                    <label for="total_tracks">Total Number Tracks:</label>
+
+                    <input class="same" type="number" name="total" id="total_tracks" maxlength="50" min="0" required
+                        autocomplete="off" placeholder="Enter total tracks">
+                </div>
+                <div>
+                    <label for="startingHead">Starting Position of Head:</label>
+
+                    <input class="same" type="number" name="start" id="startingHead" min="0" required autocomplete="off"
+                        placeholder="Enter Head to start">
+                </div>
+                <div>
+                    <label for="timetakenPertrack">Time taken per track:</label>
+                    <input class="same" type="number" name="time" id="timetakenPertrack" min="0" required
+                        autocomplete="off" placeholder="Enter time taken/track">
+
+                </div>
+                <div>
+                    <label for="Requested Tracks">Enter requested tracks:</label>
+                    <input class="same" type="number" name="req" id="Requested Tracks" min="0" autocomplete="off"
+                        required placeholder="Enter req. tracks">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="buttons">
+            <button style="background-color:yellow;color:black" class="b1" id="addTrackBtn">Add Track</button>
+            <button style="background-color:red" class="b2" id="executeButton">Execute</button>
+            <button style="background-color:green" class="b2" id="savebtn" type="submit" name="save">Save Data</button>
+            <button class="b1" id="excel" onclick="ExportToExcel('xlsx')">Export to excel</button>
+        </section>
+        <section class="inputTable">
+            <h1 style="color: #8eff03">INPUT TABLE</h1>
+            <h3>Reqested tracks:</h3>
+            <table bordercolor="green" text-size="large" border="3" cellspacing="8" cellpadding="8" id="inputtable">
+
+            </table>
+        </section>
+        <section class="output">
+            <h1 style="color: #8eff03">OUTPUT</h1>
+            <details>
+                <div class="detail">
+                    <div>
+                        <label for="trackstravelled">Total tracks travelled:</label>
+                        <input class="same" type="text" id="trackstravelled" name="trackt" readonly>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="totaltime">Total time taken :</label>
+                        <input class="same" type="text" id="totaltime" name="totalt" readonly>
+                    </div>
+                </div>
+            </details>
+            </form>
+            <h4>Processed tracks:</h4>
+            <table bordercolor="red" border="3" cellspacing="8" cellpadding="8" id="outputtable">
+
+            </table>
+        </section>
+        <button class="b1" id="toggle">Chart Divison</button>
+        <div style="width: 900px; height:550px; background-color:white;color:black;border:10px solid rgb(14, 202, 86);"
+            id="chd">
+            <button class="b2" id="chart" onclick="makechart()">Get Chart</button>
+            <canvas id="myChart"></canvas>
+        </div>
+    </main>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script src="js/scan.js"></script>
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <script>
+
+        const targetDiv = document.getElementById("chd");
+        const btn = document.getElementById("toggle");
+        btn.onclick = function () {
+            if (targetDiv.style.display !== "none") {
+                targetDiv.style.display = "none";
+            } else {
+                targetDiv.style.display = "block";
+            }
+        };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRU algorithm Info</title>
+  <link rel="icon" type="image/x-icon" href="img/logo4.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 60px;
+      color: rgb(0, 0, 0);
+    }
+
+    body {
+      padding: 80px;
+      border-image-repeat: fill;
+      background-color: #ffffff;
+      margin: 0%;
+
+      border: rgb(21, 114, 253) 12px solid;
+    }
+
+    div {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: rgb(0, 0, 0);
+      font-weight: 500;
+      font-weight: bolder;
+      font-size: large;
+      text-align: left;
+    }
+
+    .accordion-button {
+      font-size: 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: 400;
+      color: black;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: inherit;
+      background: rgb(0, 47, 255);
+      color: white;
+    }
+
+    .accordion-button:not(.collapsed)::after {
+      filter: brightness(0%) invert(70%);
+    }
+
+    .accordion-button:focus {
+      box-shadow: inherit;
+    }
+
+    p {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: rgb(0, 0, 0);
+      font-size: larger;
+      text-align: justify;
+      margin-top: 50px;
+    }
+
+    @keyframes round-robin {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-60px);
+      }
+    }
+
+    h2 {
+      color: rgb(0, 67, 250);
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 30px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+    }
+
+    th {
+      background-color: #a5adf7;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <nav aria-label="Page navigation example">
+    <a class="navbar-brand" href="/cardos">
+      <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+      <lord-icon src="https://cdn.lordicon.com/hjbsbdhw.json" trigger="hover" style="width:45px;height:45px">
+      </lord-icon>
+    </a>
+    <ul class="pagination justify-content-center">
+      <li class="page-item active">
+        <a class="page-link">Documentation</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/mvideo">Video Explanation</a>
+      </li>
+    </ul>
+  </nav><br>
+  <br>
+  <br>
+
+  <h1> <span class="multiText">MRU Page Replacement algorithm </span>
+  </h1>
+  <br>
+  <br>
+  <h2> MRU page replacement algorithm </h2>
+  <p>MRU OS (Most Recently Used Operating System) refers to a feature in some computer systems where the user's most
+    recently used operating system is automatically loaded at startup. This feature is particularly useful for users who
+    have multiple operating systems installed on their computer and frequently switch between them.
+
+    <br> When the computer is turned on, the MRU OS feature checks the last operating system used and automatically
+    loads it without the user having to select it from a list. This can save time and streamline the boot process for
+    the user. However, it's important to note that not all operating systems support this feature, and it may need to be
+    manually enabled or configured in some cases.
+  </p>
+  <br>
+  <h2>
+    Modern Day Usage
+  </h2>
+  <p>One example of MRU OS is the GRUB boot loader, which is commonly used on Linux and Unix-based systems. GRUB (which
+    stands for Grand Unified Bootloader) is designed to allow users to choose between different operating systems
+    installed on their computer, but it also includes a MRU feature that automatically loads the most recently used
+    operating system at startup.
+
+    <br> When the computer starts up, GRUB scans for all available operating systems and presents a menu of options for
+    the user to choose from. If the user doesn't make a selection within a certain amount of time, GRUB will
+    automatically load the operating system that was most recently used. This can be a convenient feature for users who
+    frequently switch between different operating systems, as it eliminates the need to manually select an operating
+    system each time the computer starts up.
+  </p>
+
+  <br>
+  <br>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          Characteristics
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          Some other important characteristics of MRU OS are:
+
+          <br> Configuration options: <br>
+          The feature may come with configuration options that allow users to customize how the most recently used
+          operating system is determined, such as by time interval or user preference.
+
+          <br> Compatibility: <br> MRU OS must be compatible with the operating systems installed on the computer. It
+          should be able to recognize and load all operating systems, regardless of the platform or version.
+
+          <br> Security: <br> Since MRU OS automatically loads the most recently used operating system, it is important
+          that the feature does not compromise system security. MRU OS must ensure that users are not accidentally
+          granted access to unauthorized systems.
+          <br>
+          User interface: <br> MRU OS may have a user interface that enables users to view and manage their operating
+          systems. This interface may provide information about the status of each operating system, including whether
+          it is up-to-date or has encountered any issues.
+
+          <br> Accessibility: <br> MRU OS should be easily accessible to users, either through a system preference
+          setting or other user-friendly means. It should also be easy to disable or enable, should the need arise.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+          Advantages
+        </button>
+      </h2>
+      <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          Time-saving: <br> MRU OS automatically loads the last operating system used by the user, which saves time
+          compared to having to manually select the operating system each time the computer starts up.
+
+          <br> User-friendly: <br> The MRU OS feature simplifies the process of switching between operating systems,
+          making it easier for users who have multiple operating systems installed on their computer.
+
+          <br> Streamlined boot process: <br> Since the MRU OS feature automatically loads the last operating system
+          used, it streamlines the boot process and eliminates the need for the user to select an operating system each
+          time the computer starts up.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Disadvantages
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          Inconvenient if users want to switch to a different operating system: <br> If a user wants to switch to a
+          different operating system than the one that was most recently used, they may have to go through additional
+          steps to select the desired operating system.
+
+          <br> Not available on all operating systems: <br> Not all operating systems support the MRU OS feature, so
+          users of some operating systems may not be able to take advantage of this functionality.
+
+          <br> Risk of errors: <br> There is a risk that the MRU OS feature may load the wrong operating system if the
+          user has recently switched between multiple operating systems or has made changes to the system configuration.
+          This can lead to errors or data loss.
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    var typingEffect = new Typed(".multiText", {
+      strings: ["MRU page replacement Algorithm", "MRU page replacement Algorithm", "MRU page replacement Algorithm"],
+      loop: true,
+      typeSpeed: 20,
+      backspeed: 40,
+      backDelay: 1400
+    }
+    )
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+  </div>
+</body>
+
+</html>

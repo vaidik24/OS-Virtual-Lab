@@ -1,0 +1,108 @@
+<html>
+  <link rel="icon" type="image/x-icon" href="img/logo4.jpg" />
+
+  <head>
+    <title>Chatbot</title>
+    <style>
+      @import
+      url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+      @import
+      url('https://fonts.googleapis.com/css2?family=Arvo&family=Piazzolla:wght@600&display=swap');
+      body { font-family: 'Piazzolla', serif; } #chat-window { width: 500px;
+      margin: 0 auto; height: 580px; padding: 20px; border: 5px solid rgb(110,
+      237, 75); border-radius: 20px; } #chat-messages { padding: 10px;
+      margin-bottom: 10px; border-bottom: 2px solid #fe2e2e; height: calc(100vh
+      - 200px); max-height: calc(100vh - 200px); overflow: auto; } #chat-form {
+      display: flex; align-items: center; } #chat-input { flex-grow: 1; padding:
+      10px; margin-right: 10px; border-radius: 10px; border: 1px solid #ccc; }
+      button[type="submit"] { padding: 10px 20px; border-radius: 10px;
+      background-color: #43ad43; color: #000000; border: none; font-size: 1rem;
+      font-weight: bold; } .bot-message { font-family: 'Piazzolla', serif;
+      background-color: #fff3f3; /* different light color */ text-align:
+      justify; /* keep it right-aligned */ padding: 15px; /* added padding */
+      margin-top: 10px; /* added margin-top to create a gap */ margin-bottom:
+      10px; display: flex; align-items: center; font-style: italic;
+      border-radius: 10px; } .user-message { font-family: 'Piazzolla', serif;
+      background-color: #92fb92; /* light color */ text-align: left; /* changed
+      text align to left */ padding: 15px; /* added padding */ display: flex;
+      border-radius: 10px; align-items: center; font-style: italic; }
+      .user-message img, .bot-message img { width: 40px; /* adjust the width of
+      the icon */ height: 40px; /* adjust the height of the icon */
+      margin-right: 20px; /* add some margin to separate the icon from the
+      message */ } @media only screen and (min-device-width: 320px) and
+      (max-device-width: 400px) { #chat-window { width: 90%; } } .main-title {
+      font-size: 1.5rem; text-align: center; font-family: 'Piazzolla', serif;
+      margin-bottom: 0.5rem; color: #fffbf5; font-style: italic; }
+      #background-video { width: 100vw; height: 100vh; object-fit: cover;
+      position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: -1; }
+    </style>
+  </head>
+
+  <body>
+    <a class="navbar-brand" href="/cardos">
+      <video
+        id="background-video"
+        autoplay
+        loop
+        muted
+        poster="https://assets.codepen.io/6093409/river.jpg"
+      >
+        <source src="video/newbg.mp4" type="video/mp4" />
+      </video>
+      <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+      <lord-icon
+        src="https://cdn.lordicon.com/hjbsbdhw.json"
+        trigger="hover"
+        style="width:45px;height:45px"
+      >
+      </lord-icon>
+    </a>
+    <div id="chd" class="chat_box">
+      <div id="chat-window">
+        <div
+          style="color:rgb(35, 248, 92);font-weight:bolder;font-size:30px"
+          class="main-title"
+        >
+          Welcome to , OS Virtual Lab HelpBOT
+        </div>
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+          <input
+            type="text"
+            id="chat-input"
+            autocomplete="off"
+            placeholder="Type your message here"
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"
+    ></script>
+    <script type="module">
+      const form = document.getElementById("chat-form"); const input =
+      document.getElementById("chat-input"); const messages =
+      document.getElementById("chat-messages"); const preText = "WELCOME , I'M
+      YOUR HELP BOT , ASK ME ABOUT ANYTHING REGARDING OS, AND ITS VARIOUS
+      ALGORITHMS..."; const sleep = (ms) => new Promise((resolve) =>
+      setTimeout(resolve, ms)); form.addEventListener("submit", async (e) => {
+      e.preventDefault(); const message = input.value; input.value = "";
+      messages.innerHTML += `<div class="message user-message"> <img
+      src="img/user.png" alt="user icon"> <span>${message}</span> </div>`; //
+      Use axios library to make a POST request to the OpenAI API const response
+      = await axios.post( "https://api.openai.com/v1/completions", { prompt:
+      preText + `${message}`, model: "text-davinci-003", temperature: 0,
+      max_tokens: 500, top_p: 1, frequency_penalty: 0.0, presence_penalty: 0.0,
+      }, { headers: { "Content-Type": "application/json", Authorization: `Bearer
+      ${apiKey}`, }, } ); const chatbotResponse = response.data.choices[0].text;
+      messages.innerHTML += `<div class="message bot-message"> <img
+      src="img/chatbot.png" alt="bot icon"> <span>${chatbotResponse}</span>
+      </div>`; await sleep(2000); // Delay for 2 seconds between requests });
+    </script>
+  </body>
+
+</html>
