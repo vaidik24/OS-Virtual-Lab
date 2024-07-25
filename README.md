@@ -1,6 +1,4 @@
-
 # OS - Scheduling Algorithms Simulation Website
-
 
 ## Table of Contents
 
@@ -19,6 +17,7 @@
 The Scheduling Algorithms Simulation Website is a web application that allows users to simulate various scheduling algorithms commonly used in computer science and operating systems. It provides a user-friendly interface to understand and visualize how different algorithms work and how they schedule processes or tasks.
 
 The website includes simulations for the following scheduling algorithms:
+
 1. Round Robin
 2. Banker's Algorithm
 3. MRU (Most Recently Used) Algorithm
@@ -58,23 +57,21 @@ The project was built using the following technologies:
 
 ## Screenshots
 
-
 ![Screenshot 1](/mainpage.png)
-*Main Page*
-
+_Main Page_
 
 ![Screenshot 2](/login.png)
-*Login Page*
+_Login Page_
 
 ![Screenshot 2](/rrlogo.png)
-*Round Robin Algorithm Simulation Page*
+_Round Robin Algorithm Simulation Page_
+
 <!-- Add more screenshots as needed -->
 
 ## Contributing
 
 Contributions are welcome! If you find any bugs or want to add new features, please create an issue or submit a pull request. Make sure to follow the code style and guidelines.
 
-
 ## Contact
 
-For any inquiries or suggestions, feel free to contact us at [apsuthar24@gmail.com](mailto:apsuthar@example.com).
+For any inquiries or suggestions, feel free to contact us at [vaidik24pandya@gmail.com](mailto:vaidik24pandya@gmail.com).
